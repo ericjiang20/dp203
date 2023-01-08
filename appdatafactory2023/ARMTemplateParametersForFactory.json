@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "appdatafactory2023"
+		},
+		"DemoVM_password": {
+			"value": ""
+		},
+		"Synapse_staging_connectionString": {
+			"value": ""
+		},
+		"dbsrv203_connectionString": {
+			"value": ""
+		},
+		"newpool_connectionString": {
+			"value": ""
+		},
+		"sadatalake2000_accountKey": {
+			"value": ""
+		},
+		"DemoVM_properties_typeProperties_host": {
+			"value": "\\\\localhost\\nginx-1.22.1\\nginx-1.22.1\\logs"
+		},
+		"DemoVM_properties_typeProperties_userId": {
+			"value": "adminuser"
+		},
+		"sadatalake2000_properties_typeProperties_url": {
+			"value": "https://sadatalake2000.dfs.core.windows.net/"
+		}
+	}
+}
