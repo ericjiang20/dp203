@@ -1,0 +1,67 @@
+{
+	"name": "LogDestination",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sadatalake2000",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "1",
+				"type": "String"
+			},
+			{
+				"name": "66641e13-d19f-4ce5-aafd-9d5d7befa557",
+				"type": "String"
+			},
+			{
+				"name": "Delete SQL database",
+				"type": "String"
+			},
+			{
+				"name": "Succeeded",
+				"type": "String"
+			},
+			{
+				"name": "Administrative",
+				"type": "String"
+			},
+			{
+				"name": "Informational",
+				"type": "String"
+			},
+			{
+				"name": "2021-06-15 04:44:38",
+				"type": "String"
+			},
+			{
+				"name": "20c6eec9-2d80-4700-b0f6-4fde579a8783",
+				"type": "String"
+			},
+			{
+				"name": "Microsoft Azure Synapse Resource Provider",
+				"type": "String"
+			},
+			{
+				"name": "Microsoft.Sql/servers/databases",
+				"type": "String"
+			},
+			{
+				"name": "synapseworkspace-managedrg-bd2eb25e-aba7-4f43-a25e-d8757194930d",
+				"type": "String"
+			}
+		]
+	}
+}
