@@ -1,0 +1,46 @@
+{
+	"name": "schemadrift",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "LogfilesDt",
+						"type": "DatasetReference"
+					},
+					"name": "logfiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "LogJsonNew",
+						"type": "DatasetReference"
+					},
+					"name": "JsonSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> logfiles",
+				"logfiles derive(each(match(type=='string'), $$ = $$)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Log.json'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> JsonSink"
+			]
+		}
+	}
+}

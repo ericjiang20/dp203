@@ -1,0 +1,76 @@
+{
+	"name": "df_conditionalsplit",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "LogSource",
+						"type": "DatasetReference"
+					},
+					"name": "LogSourceStream"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "SynpaseLogData",
+						"type": "DatasetReference"
+					},
+					"name": "LogStreamOutput"
+				}
+			],
+			"transformations": [
+				{
+					"name": "splitResourceGroup"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Id as string,",
+				"          Correlationid as string,",
+				"          Operationname as string,",
+				"          Status as string,",
+				"          Eventcategory as string,",
+				"          Level as string,",
+				"          Time as string,",
+				"          Subscription as string,",
+				"          Eventinitiatedby as string,",
+				"          Resourcetype as string,",
+				"          Resourcegroup as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> LogSourceStream",
+				"LogSourceStream split(Resourcegroup == 'new-grp',",
+				"     disjoint: false) ~> splitResourceGroup@(newgrpstream, allothergroups)",
+				"splitResourceGroup@newgrpstream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Id as integer,",
+				"          Correlationid as string,",
+				"          Operationname as string,",
+				"          Status as string,",
+				"          Eventcategory as string,",
+				"          Level as string,",
+				"          Time as timestamp,",
+				"          Subscription as string,",
+				"          Eventinitiatedby as string,",
+				"          Resourcetype as string,",
+				"          Resourcegroup as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     allowCopyCommand: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> LogStreamOutput"
+			]
+		}
+	}
+}

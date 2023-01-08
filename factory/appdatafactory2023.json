@@ -1,0 +1,9 @@
+{
+	"name": "appdatafactory2023",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "76fac1e5-7c95-40e5-b9ad-32d7cea843f2",
+		"tenantId": "f647b537-03fa-49b6-a50a-78c5a0728da6"
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "AccessLogDataLakeDt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sadatalake2000",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "access.log",
+				"folderPath": "raw/nginx",
+				"fileSystem": "data"
+			},
+			"columnDelimiter": " ",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

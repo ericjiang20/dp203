@@ -1,0 +1,6 @@
+{
+	"name": "integrationRuntimedemovm",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

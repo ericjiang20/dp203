@@ -1,0 +1,18 @@
+{
+	"name": "AccessLog",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DemoVM",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "access.log"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
